@@ -1,43 +1,17 @@
 package com.bb.offerapp.fragment.viewpaper;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Display;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.bb.offerapp.R;
-import com.bb.offerapp.activity.BodyTest;
-import com.bb.offerapp.activity.FlashLight;
-import com.bb.offerapp.activity.Gesture_1;
-import com.bb.offerapp.activity.GridView_1;
-import com.bb.offerapp.activity.Marquee;
-import com.bb.offerapp.activity.OfferAppMainActivity;
-import com.bb.offerapp.activity.PressTest;
-import com.bb.offerapp.activity.ProgressWebView;
-import com.bb.offerapp.activity.Progressbar;
-import com.bb.offerapp.activity.Toast_1;
-import com.bb.offerapp.activity.cal;
-import com.bb.offerapp.activity.wechat;
 import com.bb.offerapp.adapter.MyRecyclerAdapter;
-import com.bb.offerapp.adapter.ScaleInAnimationAdapter;
-import com.bb.offerapp.animator.ScaleInAnimator;
+
 import com.bb.offerapp.bean.ItemInfo;
-import com.bb.offerapp.dialog.LWheelDialog;
-import com.bb.offerapp.util.ActionItem;
-import com.bb.offerapp.util.QuickAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,14 +22,11 @@ import java.util.List;
 public class AFragment extends Fragment {
     //声明第一页所用到的组件
 
-    private NotificationManager manager;
 
     //RecyclerView
     private RecyclerView mRecyclerView;
     private MyRecyclerAdapter mRecyclerAdapter;
 
-    //RecyclerView动画
-    private ScaleInAnimationAdapter scaleAdapter;
 
     //Item列表
     private List<ItemInfo> mItemInfoList;
@@ -76,23 +47,16 @@ public class AFragment extends Fragment {
         mItemInfoList = new ArrayList<>();
         for(int i=1 ;i<=10;i++) {
             ItemInfo itemInfo0 = new ItemInfo();
-            itemInfo0.setMotto("Android基本组建的监听");
-            itemInfo0.setNickName("身高体重测试项目");
+            itemInfo0.setMotto("自定义Lyout复用、RecycleView");
+            itemInfo0.setNickName("RecycleView聊天窗");
             itemInfo0.setPortrait(R.mipmap.shengao);
             mItemInfoList.add(itemInfo0);
-
-            ItemInfo itemInfo1 = new ItemInfo();
-            itemInfo1.setMotto("ProgressBar的展示");
-            itemInfo1.setNickName("进度条的使用");
-            itemInfo1.setPortrait(R.mipmap.jindutiao);
-            mItemInfoList.add(itemInfo1);
 
             ItemInfo itemInfo2 = new ItemInfo();
             itemInfo2.setMotto("GridView加载适配器、数据源的配置");
             itemInfo2.setNickName("手机菜单演示");
             itemInfo2.setPortrait(R.mipmap.caidan);
             mItemInfoList.add(itemInfo2);
-
 
             ItemInfo itemInfo3 = new ItemInfo();
             itemInfo3.setMotto("实现网页加载时进度条的监听、返回键的捕捉");
@@ -119,40 +83,11 @@ public class AFragment extends Fragment {
             itemInfo6.setPortrait(R.mipmap.jisuanqi);
             mItemInfoList.add(itemInfo6);
 
-
-            ItemInfo itemInfo7 = new ItemInfo();
-            itemInfo7.setMotto("修改TextView实现上下左右滚动");
-            itemInfo7.setNickName("可控速跑马灯");
-            itemInfo7.setPortrait(R.mipmap.paomadeng);
-            mItemInfoList.add(itemInfo7);
-
-
-            ItemInfo itemInfo8 = new ItemInfo();
-            itemInfo8.setMotto("自定义view,学习绘制、定义属性");
-            itemInfo8.setNickName("时间选择器");
-            itemInfo8.setPortrait(R.mipmap.shijian);
-            mItemInfoList.add(itemInfo8);
-
-
             ItemInfo itemInfo9 = new ItemInfo();
             itemInfo9.setMotto("Fragment的事件的操作");
             itemInfo9.setNickName("微信布局");
             itemInfo9.setPortrait(R.mipmap.wechat);
             mItemInfoList.add(itemInfo9);
-
-            ItemInfo itemInfo10 = new ItemInfo();
-            itemInfo10.setMotto("Fragment增删替换等操作项目");
-            itemInfo10.setNickName("压力测试项目");
-            itemInfo10.setPortrait(R.mipmap.yali);
-            mItemInfoList.add(itemInfo10);
-
-
-            ItemInfo itemInfo11 = new ItemInfo();
-            itemInfo11.setMotto("注册权限的配置、调用手机硬件的使用");
-            itemInfo11.setNickName("调用闪光灯");
-            itemInfo11.setPortrait(R.mipmap.shanguangdeng);
-            mItemInfoList.add(itemInfo11);
-
 
             ItemInfo itemInfo12 = new ItemInfo();
             itemInfo12.setMotto("调用通知管理系统服务通知管理");
@@ -160,211 +95,52 @@ public class AFragment extends Fragment {
             itemInfo12.setPortrait(R.mipmap.tongzhi);
             mItemInfoList.add(itemInfo12);
 
+            ItemInfo itemInfo13 = new ItemInfo();
+            itemInfo13.setMotto("自定义View");
+            itemInfo13.setNickName("自定义View");
+            itemInfo13.setPortrait(R.mipmap.tongzhi);
+            mItemInfoList.add(itemInfo13);
+
+            ItemInfo itemInfo14 = new ItemInfo();
+            itemInfo14.setMotto("发送接收广播、清空栈");
+            itemInfo14.setNickName("强制下线");
+            itemInfo14.setPortrait(R.mipmap.tongzhi);
+            mItemInfoList.add(itemInfo14);
+
+            ItemInfo itemInfo15 = new ItemInfo();
+            itemInfo15.setMotto("Handler");
+            itemInfo15.setNickName("加载网络图片");
+            itemInfo15.setPortrait(R.mipmap.tongzhi);
+            mItemInfoList.add(itemInfo15);
+
         }
 
     }
 
     private void initView_RecyclerView() {
 
-        //设置动画： 将mRecyclerAdapter作为参数传入动画Adapter"scaleAdapter"，让mRecyclerView加载动画Adapter
-        mRecyclerView.setItemAnimator(new ScaleInAnimator());
-        mRecyclerAdapter = new MyRecyclerAdapter(mItemInfoList);
-        scaleAdapter = new ScaleInAnimationAdapter(mRecyclerAdapter);
-        scaleAdapter.setFirstOnly(false);
-        scaleAdapter.setDuration(400);
-
         //设置线性布局
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerAdapter = new MyRecyclerAdapter(mItemInfoList,getActivity());
         mRecyclerAdapter.setSmallType(false);
-        mRecyclerView.setAdapter(scaleAdapter);
+        mRecyclerView.setAdapter(mRecyclerAdapter);
 
         //禁止嵌套滑动 可以让其由于惯性滑动
         mRecyclerView.setNestedScrollingEnabled(true);
-
-
-        //单机点击事件
-        mRecyclerAdapter.setOnItemClickListener(new MyRecyclerAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-
-                switch (position%13) {
-                    case 0:
-                        Intent intent0 = new Intent(getActivity(), BodyTest.class);
-                        startActivity(intent0);
-                        break;
-                    case 1:
-                        Intent intent1 = new Intent(getActivity(), Progressbar.class);
-                        startActivity(intent1);
-                        break;
-                    case 2:
-                        Intent intent2 = new Intent(getActivity(), GridView_1.class);
-                        startActivity(intent2);
-                        break;
-                    case 3:
-                        Intent intent3 = new Intent(getActivity(), ProgressWebView.class);
-                        startActivity(intent3);
-                        break;
-                    case 4:
-                        Intent intent7 = new Intent(getActivity(), Gesture_1.class);
-                        startActivity(intent7);
-                        break;
-                    case 5:
-                        Intent intent8 = new Intent(getActivity(), Toast_1.class);
-                        startActivity(intent8);
-                        break;
-                    case 6:
-                        Intent intent10 = new Intent(getActivity(), cal.class);
-                        startActivity(intent10);
-                        break;
-                    case 7:
-                        Intent intent11 = new Intent(getActivity(), Marquee.class);
-                        startActivity(intent11);
-                        break;
-                    case 8:
-                        LWheel();
-                        break;
-                    case 9:
-                        Intent intent13 = new Intent(getActivity(), wechat.class);
-                        startActivity(intent13);
-                        break;
-                    case 10:
-                        Intent intent14 = new Intent(getActivity(), PressTest.class);
-                        startActivity(intent14);
-                        break;
-                    case 11:
-                        Intent intent15 = new Intent(getActivity(), FlashLight.class);
-                        startActivity(intent15);
-                        break;
-                    case 12:
-                        sendNotification();
-                        break;
-                }
-            }
-        });
     }
 
 
 
 
-    //方便在 主页面调用
+    //方便其他地方调用
     public MyRecyclerAdapter getmRecyclerAdapter() {
         return mRecyclerAdapter;
     }
 
     public RecyclerView getmRecyclerView() {
         return mRecyclerView;
-    }
-
-
-    public ScaleInAnimationAdapter getScaleAdapter() {
-        return scaleAdapter;
-    }
-
-
-
-    //通知
-    private void sendNotification() {
-        manager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent intent = new Intent(getActivity(), OfferAppMainActivity.class);
-        PendingIntent pintent = PendingIntent.getActivity(getActivity(), 0, intent, 0);
-        Notification.Builder builder = new Notification.Builder(getActivity());
-        builder.setSmallIcon(R.mipmap.ic_launcher);//设置图标
-        builder.setTicker("hello");//手机状态栏的提示；
-        builder.setWhen(System.currentTimeMillis());//设置时间
-        builder.setContentTitle("通知栏通知");//设置标题
-        builder.setContentText("我来自NotificationDemo");//设置通知内容
-        builder.setContentIntent(pintent);//点击后的意图
-        builder.setDefaults(Notification.DEFAULT_ALL);//设置震动
-        Notification notification = builder.build();//4.1以上
-        manager.notify(1, notification);
-
-    }
-
-
-    //引用
-    private void LWheel() {
-        LWheelDialog dialog = new LWheelDialog(getActivity(), LWheelDialog.LWheelDialogType.ALL, null);
-        Window window = dialog.getWindow();
-        window.setGravity(Gravity.BOTTOM); // 此处可以设置dialog显示的位置
-        window.setWindowAnimations(R.style.dialogstyle_vertical);
-        dialog.setCancelable(true);
-        dialog.show();
-        WindowManager m = getActivity().getWindowManager();
-        Display d = m.getDefaultDisplay(); // 获取屏幕宽、高用
-        WindowManager.LayoutParams p = window.getAttributes(); // 获取对话框当前的参数值
-        p.height = (int) (d.getHeight() * 0.4);
-        p.width = (int) (d.getWidth());
-        dialog.onWindowAttributesChanged(p);
-
-        window.setAttributes(p);
-    }
-
-
-
-
-
-    //引用
-    private void init_tools(View view) {
-
-        int ID_UP = 1;
-        int ID_DOWN = 2;
-        int ID_SEARCH = 3;
-        int ID_INFO = 4;
-        int ID_ERASE = 5;
-        int ID_OK = 6;
-
-
-        ActionItem nextItem = new ActionItem(ID_DOWN, "Next", getResources().getDrawable(R.drawable.menu_down_arrow));
-        ActionItem prevItem = new ActionItem(ID_UP, "Prev", getResources().getDrawable(R.drawable.menu_up_arrow));
-        ActionItem searchItem = new ActionItem(ID_SEARCH, "Find", getResources().getDrawable(R.drawable.menu_search));
-        ActionItem infoItem = new ActionItem(ID_INFO, "Info", getResources().getDrawable(R.drawable.menu_info));
-        ActionItem eraseItem = new ActionItem(ID_ERASE, "Clear", getResources().getDrawable(R.drawable.menu_eraser));
-        ActionItem okItem = new ActionItem(ID_OK, "OK", getResources().getDrawable(R.drawable.menu_ok));
-
-
-        prevItem.setSticky(true);
-        nextItem.setSticky(true);
-
-
-        final QuickAction quickAction = new QuickAction(getActivity(), QuickAction.VERTICAL);
-
-
-        quickAction.addActionItem(nextItem);
-        quickAction.addActionItem(prevItem);
-        quickAction.addActionItem(searchItem);
-        quickAction.addActionItem(infoItem);
-        quickAction.addActionItem(eraseItem);
-        quickAction.addActionItem(okItem);
-
-
-        quickAction.setOnActionItemClickListener(new QuickAction.OnActionItemClickListener() {
-            @Override
-            public void onItemClick(QuickAction source, int pos, int actionId) {
-                ActionItem actionItem = quickAction.getActionItem(pos);
-
-
-                if (actionId == 3) {
-                    Toast.makeText(getActivity(), "Let's do some search action", Toast.LENGTH_SHORT).show();
-                } else if (actionId == 4) {
-                    Toast.makeText(getActivity(), "I have no info this time", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), actionItem.getTitle() + " selected", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
-        quickAction.setOnDismissListener(new QuickAction.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                Toast.makeText(getActivity(), "Dismissed", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        quickAction.show(view);
     }
 
 

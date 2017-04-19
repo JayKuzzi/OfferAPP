@@ -25,28 +25,24 @@ public class Toast_1 extends Activity {
 		findViewById(R.id.toast_btn1).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				showToast1();
 			}
 		});
 		findViewById(R.id.toast_btn2).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				showToast2();
 			}
 		});
 		findViewById(R.id.toast_btn3).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				showToast3();
 			}
 		});
 		findViewById(R.id.toast_btn4).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				showToast4();
 			}
 		});

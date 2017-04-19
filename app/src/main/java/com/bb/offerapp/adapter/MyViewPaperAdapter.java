@@ -15,11 +15,11 @@ import com.bb.offerapp.fragment.viewpaper.BFragment;
 
 public class MyViewPaperAdapter extends FragmentPagerAdapter {
 
-
     AFragment aFragment;
     BFragment bFragment;
 
     private String[] tabTittle;
+
     public MyViewPaperAdapter(FragmentManager fm, String[] tabTittle) {
         super(fm);
         this.tabTittle = tabTittle;

@@ -1,75 +1,69 @@
 package com.bb.offerapp.adapter;
 
-import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bb.offerapp.R;
-import com.bb.offerapp.option.Msg;
+import com.bb.offerapp.bean.Msg;
 
 import java.util.List;
 
-public class MsgAdapter extends ArrayAdapter<Msg> {
-	private int resouceId;
-	
-	
-	public MsgAdapter(Context context, int resource, List<Msg> objects) {
-		super(context, resource, objects);
-		resouceId=resource;
-	}
+public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
-		Msg msg = getItem(position);
-		ViewHolder holder;
-		View view;
-		if(convertView==null){
-			view= View.inflate(getContext(), resouceId, null);
-			holder=new ViewHolder();
-			holder.left_layout=(LinearLayout) view.findViewById(R.id.left_layout);
-			holder.right_layout=(LinearLayout) view.findViewById(R.id.right_layout);
-			holder.left_msg=(TextView) view.findViewById(R.id.left_msg);
-			holder.right_msg=(TextView) view.findViewById(R.id.right_msg);
-			view.setTag(holder);
-		}else{
-			view=convertView;
-			holder = (ViewHolder) view.getTag();
-			
-		}
-		if(msg.getType()==Msg.TYPE_RECEIVED){
-			holder.left_layout.setVisibility(View.VISIBLE);
-			holder.right_layout.setVisibility(View.GONE);
-			holder.left_msg.setText(msg.getContent());
-		}else if(msg.getType()==Msg.TYPE_SENT){
-			holder.left_layout.setVisibility(View.GONE);
-			holder.right_layout.setVisibility(View.VISIBLE);
-			holder.right_msg.setText(msg.getContent());
-		}
-		
-		return view;
-		
-		
-		
-	}
-	class ViewHolder{
-		LinearLayout left_layout,right_layout;
-		TextView left_msg,right_msg;
-	}
-	
+    private List<Msg> mMsgList;
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+
+        LinearLayout leftLayout;
+
+        LinearLayout rightLayout;
+
+        TextView leftMsg;
+
+        TextView rightMsg;
+
+        public ViewHolder(View view) {
+            super(view);
+            leftLayout = (LinearLayout) view.findViewById(R.id.left_layout);
+            rightLayout = (LinearLayout) view.findViewById(R.id.right_layout);
+            leftMsg = (TextView) view.findViewById(R.id.left_msg);
+            rightMsg = (TextView) view.findViewById(R.id.right_msg);
+        }
+    }
+
+    public MsgAdapter(List<Msg> msgList) {
+        mMsgList = msgList;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.msg_item, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        Msg msg = mMsgList.get(position);
+        if (msg.getType() == Msg.TYPE_RECEIVED) {
+            // 如果是收到的消息，则显示左边的消息布局，将右边的消息布局隐藏
+            holder.leftLayout.setVisibility(View.VISIBLE);
+            holder.rightLayout.setVisibility(View.GONE);
+            holder.leftMsg.setText(msg.getContent());
+        } else if(msg.getType() == Msg.TYPE_SENT) {
+            // 如果是发出的消息，则显示右边的消息布局，将左边的消息布局隐藏
+            holder.rightLayout.setVisibility(View.VISIBLE);
+            holder.leftLayout.setVisibility(View.GONE);
+            holder.rightMsg.setText(msg.getContent());
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return mMsgList.size();
+    }
 
 }
-
-
-
-
-
-
-
-
-
-
-

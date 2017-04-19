@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp" >
 
     <LinearLayout
         android:id="@+id/left_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:background="@drawable/local_popup_bg"
-        android:orientation="horizontal">
+        android:background="@drawable/message_left" >
 
         <TextView
             android:id="@+id/left_msg"
@@ -20,6 +19,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:textColor="#fff" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -27,8 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:background="@drawable/widget_bg_portrait_child"
-        android:orientation="horizontal">
+        android:background="@drawable/message_right" >
 
         <TextView
             android:id="@+id/right_msg"
@@ -36,11 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp" />
+
     </LinearLayout>
 
 </LinearLayout>
-
-
-
-
-

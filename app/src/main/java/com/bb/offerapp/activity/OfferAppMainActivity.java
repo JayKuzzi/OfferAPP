@@ -54,7 +54,7 @@ import me.grantland.widget.AutofitTextView;
 
 
 public class OfferAppMainActivity extends AppCompatActivity{
-    //两次推出程序
+    //两次退出程序
     private static boolean isExit = false;
     Bitmap photo;
     Handler mHandler = new Handler() {
@@ -67,6 +67,7 @@ public class OfferAppMainActivity extends AppCompatActivity{
 
     //悬浮按钮
     private FloatingActionButton fab;
+
     //欢迎
     private AppBarLayout app_bar;
     //tab菜单
@@ -98,7 +99,6 @@ public class OfferAppMainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         initView_ImageView();//初始化首页壁纸
         initView_NavigationView();//初始化DrawerLayout侧滑菜单导航
         initView_AppBarLayout();//初始化AppBarLayout
@@ -118,10 +118,13 @@ public class OfferAppMainActivity extends AppCompatActivity{
     private void initView_DrawerLayout() {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.setScrimColor(Color.TRANSPARENT);
+
+        //按钮
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
         drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerClosed(View v) {
@@ -152,29 +155,6 @@ public class OfferAppMainActivity extends AppCompatActivity{
     }
 
 
-//    //右侧菜单
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater menuInflater = getMenuInflater();
-//        menuInflater.inflate(R.menu.recyclerview_option, menu);
-//        return true;
-//    }
-//
-//    //右侧菜单点击事件
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int itemId = item.getItemId();
-//        if (itemId == R.id.lin) {
-//
-//        } else if (itemId == R.id.grid) {
-//
-//        } else if (itemId == R.id.staggered) {
-//
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
-
     //两次退出程序
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -184,7 +164,6 @@ public class OfferAppMainActivity extends AppCompatActivity{
         }
         return super.onKeyDown(keyCode, event);
     }
-
     private void exit() {
         if (!isExit) {
             isExit = true;
@@ -218,6 +197,7 @@ public class OfferAppMainActivity extends AppCompatActivity{
                     Intent openAlbumIntent = new Intent(Intent.ACTION_GET_CONTENT);
                     openAlbumIntent.setType("image/*");
                     startActivityForResult(openAlbumIntent, 1);
+
                 } else if (id == R.id.nav_changecity) {
                     cityNameDialog = new CityNameDialog(OfferAppMainActivity.this);
                     cityNameDialog.show();
@@ -249,10 +229,10 @@ public class OfferAppMainActivity extends AppCompatActivity{
 
                 } else if (id == R.id.nav_lineshow) {
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(OfferAppMainActivity.this);
-                    linearLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
+                    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                     myViewPaperAdapter.getaFragment().getmRecyclerView().setLayoutManager(linearLayoutManager);
                     myViewPaperAdapter.getaFragment().getmRecyclerAdapter().setSmallType(false);
-                    myViewPaperAdapter.getaFragment().getmRecyclerView().setAdapter(myViewPaperAdapter.getaFragment().getScaleAdapter());
+                    myViewPaperAdapter.getaFragment().getmRecyclerView().setAdapter(myViewPaperAdapter.getaFragment().getmRecyclerAdapter());
 
                 }
 
@@ -341,7 +321,6 @@ public class OfferAppMainActivity extends AppCompatActivity{
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
@@ -364,38 +343,13 @@ public class OfferAppMainActivity extends AppCompatActivity{
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                OfferAppMainActivity.this.mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Snackbar.make(view, "3秒后将跳转到浏览器", 1000)
-                                .setAction("Action", null).show();
-                    }
-                }, 0);
-                OfferAppMainActivity.this.mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Snackbar.make(view, "2秒后将跳转到浏览器", 1000)
-                                .setAction("Action", null).show();
-                    }
-                }, 1000);
-                OfferAppMainActivity.this.mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Snackbar.make(view, "1秒后将跳转到浏览器", 1000)
-                                .setAction("Action", null).show();
-                    }
-                }, 2000);
-                OfferAppMainActivity.this.mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Uri uri = Uri.parse("https://github.com/JayKuzzi");
-                        Intent it = new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(it);
-                    }
-                }, 3000);
+                Uri uri = Uri.parse("https://github.com/JayKuzzi");
+                Intent it = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(it);
             }
         });
     }
+
 
     private void initView_WeatherCard() {
 
@@ -408,7 +362,6 @@ public class OfferAppMainActivity extends AppCompatActivity{
         weather_city.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 cityNameDialog = new CityNameDialog(OfferAppMainActivity.this);
                 cityNameDialog.show();
                 cityNameDialog.getOk().setOnClickListener(new View.OnClickListener() {
@@ -436,11 +389,9 @@ public class OfferAppMainActivity extends AppCompatActivity{
                 , TPWeatherManager.TPTemperatureUnit.kCelsius
                 , new Date(), 3
                 , new TPListeners.TPWeatherDailyListener() {
-
                     @Override
                     public void onTPWeatherDailyAvailable(TPWeatherDaily[] tpWeatherDailies, String s) {
                         if (tpWeatherDailies != null) {
-
                             String textDay = tpWeatherDailies[0].textDay;
                             switch (textDay) {
                                 case "晴":
@@ -548,12 +499,10 @@ public class OfferAppMainActivity extends AppCompatActivity{
                                 case "未知":
                                     weather_icon.setImageResource(R.drawable.na);
                                     break;
-
                             }
                             weather_case.setText(textDay);
                             weather_degree.setText(tpWeatherDailies[0].lowTemperature + "°~" + tpWeatherDailies[0].highTemperature + "°");
                             weather_wind.setText(tpWeatherDailies[0].windDirection + "风 " + (int) tpWeatherDailies[0].windScale + "级");
-                            Log.i("wea",tpWeatherDailies[0].textDay);
                         } else {
                             System.out.println(s); //错误信息
                         }
@@ -561,7 +510,6 @@ public class OfferAppMainActivity extends AppCompatActivity{
 
                 });
     }
-
 
     private void initView_NowWeatherData(String cityNamee) {
         TPWeatherManager weatherManager = TPWeatherManager.sharedWeatherManager();
@@ -579,6 +527,10 @@ public class OfferAppMainActivity extends AppCompatActivity{
                     }
                 });
     }
+
+
+
+
 
 
     //此处将控制NavigationView侧滑出的高度、宽度已经重心位置（居中？靠上？靠下？）
