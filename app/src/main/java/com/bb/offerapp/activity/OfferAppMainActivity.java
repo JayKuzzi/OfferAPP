@@ -191,7 +191,6 @@ public class OfferAppMainActivity extends AppCompatActivity{
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-
                 if (id == R.id.nav_changepic) {
 
                     Intent openAlbumIntent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -236,8 +235,6 @@ public class OfferAppMainActivity extends AppCompatActivity{
 
                 }
 
-
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             }
