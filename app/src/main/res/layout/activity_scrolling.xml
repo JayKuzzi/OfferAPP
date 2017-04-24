@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+    <!--fitsSystemWindows可讲布局与状态栏融合，并把主题中statusBarColor设为透明才生效-->
+<!--CoordinatorLayout类似于FragmentLayout 默认叠加，
+    可监控滚动子view变化并作出合理位置调整 -->
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,6 +12,10 @@
     tools:context="com.bb.offerapp.activity.OfferAppMainActivity"
     android:background="#FAFAFA">
 
+    <!--若不设置AppBarLayou，由于为CoordinatorLayout类似
+    FragmentLayout，底层RecycleView 将显示在底层，
+    有了AppBarLayout，可以解决这一问题-->
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -15,6 +23,10 @@
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+
+        <!--CollapsingToolbarLayout（可折叠式标题栏，不可单独存在
+        ，必须被AppBarLayou包裹，）表示中由layout_scrollFlags
+        表示在内容滚动时，CollapsingToolbarLayout中的内容随之收缩至标题栏高度-->
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
@@ -24,7 +36,6 @@
             app:expandedTitleMarginBottom="60dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:statusBarScrim="@color/mnls">
-
 
             <ImageView
                 android:id="@+id/imageview"
@@ -179,7 +190,6 @@
 
 
             </FrameLayout>
-
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>

@@ -1,6 +1,8 @@
 package com.bb.offerapp.activity;
 
 
+import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -53,7 +55,7 @@ import java.util.Date;
 import me.grantland.widget.AutofitTextView;
 
 
-public class OfferAppMainActivity extends AppCompatActivity{
+public class OfferAppMainActivity extends AppCompatActivity {
     //两次退出程序
     private static boolean isExit = false;
     Bitmap photo;
@@ -114,7 +116,6 @@ public class OfferAppMainActivity extends AppCompatActivity{
     }
 
 
-
     private void initView_DrawerLayout() {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         //按钮
@@ -122,6 +123,7 @@ public class OfferAppMainActivity extends AppCompatActivity{
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
     }
 
 
@@ -134,6 +136,7 @@ public class OfferAppMainActivity extends AppCompatActivity{
         }
         return super.onKeyDown(keyCode, event);
     }
+
     private void exit() {
         if (!isExit) {
             isExit = true;
@@ -234,6 +237,7 @@ public class OfferAppMainActivity extends AppCompatActivity{
         app_bar = (AppBarLayout) findViewById(R.id.app_bar);
         app_bar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 if (verticalOffset == 0) {
@@ -303,18 +307,25 @@ public class OfferAppMainActivity extends AppCompatActivity{
 
 
     private void initView_FloatingActionButton() {
+        final Github github =new Github(this);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setBackgroundTintList(ColorStateList.valueOf(Color.argb(222, 208, 166, 80)));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(final View view) {
-                Uri uri = Uri.parse("https://github.com/JayKuzzi");
-                Intent it = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(it);
+            public void onClick(View view) {
+                Snackbar.make(view, "将跳转至浏览器", Snackbar.LENGTH_LONG)
+                        .setAction("取消", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mHandler.removeCallbacks(github);
+                                Toast.makeText(OfferAppMainActivity.this, "已取消", Toast.LENGTH_SHORT).show();
+                            }
+                        }).show();
+
+                mHandler.postDelayed(github, 3000);
             }
         });
     }
-
 
     private void initView_WeatherCard() {
 
@@ -491,6 +502,21 @@ public class OfferAppMainActivity extends AppCompatActivity{
                         }
                     }
                 });
+
+    }
+
+}
+
+class Github implements Runnable {
+    Context context;
+    Github(Context context){
+        this.context=context;
+    }
+    @Override
+    public void run() {
+        Uri uri = Uri.parse("https://github.com/JayKuzzi");
+        Intent it = new Intent(Intent.ACTION_VIEW, uri);
+        context.startActivity(it);
     }
 }
 
