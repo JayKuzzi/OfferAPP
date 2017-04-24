@@ -7,12 +7,12 @@
         android:width="0.01dp"
         android:color="#BFBFBF" />
 
-    <!-- 这个可以不加，padding用不上
+
     <padding
-        android:bottom="1dp"
+        android:bottom="2dp"
         android:left="0.5dp"
         android:right="0.5dp"
-        android:top="0dp" /> -->
+        android:top="0dp" />
 
     <corners
         android:bottomLeftRadius="10dp"
