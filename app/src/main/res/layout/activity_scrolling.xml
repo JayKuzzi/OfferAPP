@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <!--fitsSystemWindows可讲布局与状态栏融合，并把主题中statusBarColor设为透明才生效-->
-<!--CoordinatorLayout类似于FragmentLayout 默认叠加，
-    可监控滚动子view变化并作出合理位置调整 -->
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FAFAFA"
     android:fitsSystemWindows="true"
-    tools:context="com.bb.offerapp.activity.OfferAppMainActivity"
-    android:background="#FAFAFA">
-
-    <!--若不设置AppBarLayou，由于为CoordinatorLayout类似
-    FragmentLayout，底层RecycleView 将显示在底层，
-    有了AppBarLayout，可以解决这一问题-->
+    tools:context="com.bb.offerapp.activity.OfferAppMainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -23,10 +16,6 @@
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-
-        <!--CollapsingToolbarLayout（可折叠式标题栏，不可单独存在
-        ，必须被AppBarLayou包裹，）表示中由layout_scrollFlags
-        表示在内容滚动时，CollapsingToolbarLayout中的内容随之收缩至标题栏高度-->
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
@@ -73,19 +62,18 @@
                         android:layout_height="60dp"
                         android:src="@mipmap/sun" />
 
-                    <me.grantland.widget.AutofitTextView
-                        xmlns:autofit="http://schemas.android.com/apk/res-auto"
+                    <me.grantland.widget.AutofitTextView xmlns:autofit="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/weather_city"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
-                        android:text="北京"
-                        android:singleLine="true"
-                        android:maxLines="1"
-                        android:gravity="center"
                         android:layout_marginBottom="3dp"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="北京"
                         android:textColor="#deffffff"
                         android:textSize="26sp"
-                        autofit:minTextSize="13sp"/>
+                        autofit:minTextSize="13sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -97,18 +85,17 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <me.grantland.widget.AutofitTextView
-                        xmlns:autofit="http://schemas.android.com/apk/res-auto"
+                    <me.grantland.widget.AutofitTextView xmlns:autofit="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/weather_case"
                         android:layout_width="56dp"
                         android:layout_height="wrap_content"
-                        android:text="晴"
-                        android:singleLine="true"
-                        android:maxLines="1"
                         android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="晴"
                         android:textColor="#deffffff"
                         android:textSize="28sp"
-                        autofit:minTextSize="13sp"/>
+                        autofit:minTextSize="13sp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -121,8 +108,8 @@
                             android:id="@+id/weather_degree"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1°~14°"
                             android:layout_marginBottom="-1dp"
+                            android:text="1°~14°"
                             android:textColor="#deffffff"
                             android:textSize="13sp" />
 
@@ -130,8 +117,8 @@
                             android:id="@+id/weather_wind"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="东北风 3级"
                             android:layout_marginBottom="3dp"
+                            android:text="东北风 3级"
                             android:textColor="#deffffff"
                             android:textSize="13sp" />
                     </LinearLayout>
@@ -164,15 +151,16 @@
                 <View
                     android:layout_width="1dp"
                     android:layout_height="28dp"
-                    android:background="#66fefefe"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="43dp"/>
+                    android:layout_marginLeft="43dp"
+                    android:background="#66fefefe" />
+
                 <LinearLayout
                     android:layout_width="120dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/lyout_board"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="43dp">
+                    android:layout_marginLeft="43dp"
+                    android:background="@drawable/lyout_board">
 
                 </LinearLayout>
 

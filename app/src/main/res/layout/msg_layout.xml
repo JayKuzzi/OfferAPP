@@ -7,7 +7,6 @@
     <com.bb.offerapp.view.MyTittleLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
     </com.bb.offerapp.view.MyTittleLayout>
 
     <android.support.v7.widget.RecyclerView

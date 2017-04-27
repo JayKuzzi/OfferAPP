@@ -1,6 +1,7 @@
 package com.bb.offerapp.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -13,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bb.offerapp.R;
+import com.bb.offerapp.util.HttpCallbackListener;
+import com.bb.offerapp.util.HttpCientCallback;
+import com.bb.offerapp.util.HttpTool;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -25,10 +29,10 @@ import org.apache.http.util.EntityUtils;
  * Created by bb on 2017/4/12.
  */
 public class Pic extends Activity {
-    private final String PATH = "http://wallpaperswide.com/download/hot_air_balloons_in_the_air-wallpaper-2560x1024.jpg";
-    private final String PATH2 = "http://wallpaperswide.com/download/moraine_lake_and_the_valley_of_the_ten_peaks-wallpaper-2560x1024.jpg";
-    private final String PATH3 = "http://wallpaperswide.com/download/iceland_waterfall_2-wallpaper-2560x1024.jpg";
-    private Button button;
+    private final String PATH = "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/82975551C7.jpg";
+    private final String PATH2 = "https://3hsyn13u3q9dhgyrg2qh3tin-wpengine.netdna-ssl.com/wp-content/uploads/2016/04/SplitShire-190071.jpg";
+    private final String PATH3 = "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/592EBB6D4B.jpg";
+    private Button button,button2;
     private ImageView imageView, imageView2, imageView3;
     TextView textView, textView2, textView3;
     public Handler handler = new Handler() {
@@ -73,6 +77,7 @@ public class Pic extends Activity {
         textView3 = (TextView) findViewById(R.id.tv3);
 
         button = (Button) findViewById(R.id.btn);
+        button2 = (Button) findViewById(R.id.btn2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,65 +87,60 @@ public class Pic extends Activity {
                 textView3.setText("正在加载。。。");
             }
         });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(Pic.this,AsyncTaskTest.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void picDown() {
-        new Thread(new Runnable() {
+        HttpTool.sendRequestWithHttpCient(PATH, new HttpCientCallback() {
             @Override
-            public void run() {
-                HttpClient httpClient = new DefaultHttpClient();
-                HttpGet httpGet = new HttpGet(PATH);
-                try {
-                    HttpResponse httpResponse = httpClient.execute(httpGet);
-                    if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                        byte[] data = EntityUtils.toByteArray(httpResponse
-                                .getEntity());
-                        Message message = Message.obtain();
-                        message.obj = data;
-                        message.what = 1;
-                        handler.sendMessage(message);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                }
-
-                HttpClient httpClient2 = new DefaultHttpClient();
-                HttpGet httpGet2 = new HttpGet(PATH2);
-                try {
-                    HttpResponse httpResponse2 = httpClient2.execute(httpGet2);
-                    if (httpResponse2.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                        byte[] data = EntityUtils.toByteArray(httpResponse2
-                                .getEntity());
-                        Message message = Message.obtain();
-                        message.obj = data;
-                        message.what = 2;
-                        handler.sendMessage(message);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                }
-
-                HttpClient httpClient3 = new DefaultHttpClient();
-                HttpGet httpGet3 = new HttpGet(PATH3);
-                try {
-                    HttpResponse httpResponse3 = httpClient3.execute(httpGet3);
-                    if (httpResponse3.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                        byte[] data = EntityUtils.toByteArray(httpResponse3
-                                .getEntity());
-                        Message message = Message.obtain();
-                        message.obj = data;
-                        message.what = 3;
-                        handler.sendMessage(message);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                }
-
+            public void onFinish(byte[] data) {
+                // ...省略对返回结果的处理代码
+                Message message = Message.obtain();
+                message.obj = data;
+                message.what = 1;
+                handler.sendMessage(message);
             }
-        }).start();
+            @Override
+            public void onError(Exception e) {
+                // ...省略请求失败的处理代码
+            }
+        });
+
+        HttpTool.sendRequestWithHttpCient(PATH2, new HttpCientCallback() {
+            @Override
+            public void onFinish(byte[] data) {
+                // ...省略对返回结果的处理代码
+                Message message = Message.obtain();
+                message.obj = data;
+                message.what = 2;
+                handler.sendMessage(message);
+            }
+            @Override
+            public void onError(Exception e) {
+                // ...省略请求失败的处理代码
+            }
+        });
+
+        HttpTool.sendRequestWithHttpCient(PATH3, new HttpCientCallback() {
+            @Override
+            public void onFinish(byte[] data) {
+                // ...省略对返回结果的处理代码
+                Message message = Message.obtain();
+                message.obj = data;
+                message.what = 3;
+                handler.sendMessage(message);
+            }
+            @Override
+            public void onError(Exception e) {
+                // ...省略请求失败的处理代码
+            }
+        });
     }
 }
 

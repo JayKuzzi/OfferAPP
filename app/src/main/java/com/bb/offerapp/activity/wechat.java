@@ -96,19 +96,14 @@ public class wechat extends Activity implements View.OnClickListener {
     //菜单
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_wechat, menu);
+        getMenuInflater().inflate(R.menu.menu_wechat, menu);
         return true;
-//        MenuInflater menuInflater = getMenuInflater();
-//        menuInflater.inflate(R.menu.menu_wechat, menu);
-//        return true;
     }
 
     //菜单点击事件
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     //        int itemId = item.getItemId();
-
         return super.onOptionsItemSelected(item);
     }
 }

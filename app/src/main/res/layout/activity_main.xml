@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--DrawerLayout是Material Design中滑动菜单效果布局，
-第一个子控件在前，第二个隐藏(第二个必须指定layout_gravity)-->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -19,7 +17,7 @@
         android:id="@+id/nav_view"
         app:itemTextColor="#070707"
         android:background="#F9F9F9"
-        android:layout_width="330dp"
+        android:layout_width="290dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header_main"

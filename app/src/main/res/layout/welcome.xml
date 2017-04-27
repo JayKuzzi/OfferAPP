@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/sea"
+    android:background="@drawable/sea2"
     >
 
     <LinearLayout
@@ -17,7 +17,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/app" />
+            android:src="@mipmap/icon2" />
 
         <TextView
             android:layout_marginTop="10dp"
@@ -26,7 +26,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OfferApp v1.0" />
+            android:text="OfferApp" />
 
 
 
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Designed by bb\nMade by bb" />
+        android:text="Designed by bb" />
 
 
 

@@ -38,7 +38,6 @@ public class AFragment extends Fragment {
         View view = inflater.inflate(R.layout.recycle_a_fragment, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_fragment);
         initView_RecyclerView();//初始化RecyclerView
-
         return view;
     }
 
@@ -47,71 +46,77 @@ public class AFragment extends Fragment {
         mItemInfoList = new ArrayList<>();
         for(int i=1 ;i<=10;i++) {
             ItemInfo itemInfo0 = new ItemInfo();
-            itemInfo0.setMotto("自定义Lyout复用、RecycleView");
-            itemInfo0.setNickName("RecycleView聊天窗");
-            itemInfo0.setPortrait(R.mipmap.shengao);
+            itemInfo0.setMotto("RecycleView、自定义Layout复用");
+            itemInfo0.setNickName("聊天窗口");
+            itemInfo0.setPortrait(R.mipmap.a1);
             mItemInfoList.add(itemInfo0);
 
+            ItemInfo itemInfo1 = new ItemInfo();
+            itemInfo1.setMotto("动态Fragment管理");
+            itemInfo1.setNickName("微信布局");
+            itemInfo1.setPortrait(R.mipmap.a2);
+            mItemInfoList.add(itemInfo1);
+
             ItemInfo itemInfo2 = new ItemInfo();
-            itemInfo2.setMotto("GridView加载适配器、数据源的配置");
-            itemInfo2.setNickName("手机菜单演示");
-            itemInfo2.setPortrait(R.mipmap.caidan);
+            itemInfo2.setMotto("新风格高优先级通知");
+            itemInfo2.setNickName("一条通知");
+            itemInfo2.setPortrait(R.mipmap.a3);
             mItemInfoList.add(itemInfo2);
 
+
             ItemInfo itemInfo3 = new ItemInfo();
-            itemInfo3.setMotto("实现网页加载时进度条的监听、返回键的捕捉");
-            itemInfo3.setNickName("带进度条的WebView");
-            itemInfo3.setPortrait(R.mipmap.webview);
+            itemInfo3.setMotto("发送接收广播、栈管理、数据处久化、sqlite");
+            itemInfo3.setNickName("强制下线");
+            itemInfo3.setPortrait(R.mipmap.a4);
             mItemInfoList.add(itemInfo3);
 
             ItemInfo itemInfo4 = new ItemInfo();
-            itemInfo4.setMotto("使用GestureOverlayView加载预设手势");
-            itemInfo4.setNickName("自定义手势");
-            itemInfo4.setPortrait(R.mipmap.shoushi);
+            itemInfo4.setMotto("Handler更新UI、AsyncTask使用");
+            itemInfo4.setNickName("网络图片");
+            itemInfo4.setPortrait(R.mipmap.a5);
             mItemInfoList.add(itemInfo4);
 
             ItemInfo itemInfo5 = new ItemInfo();
-            itemInfo5.setMotto("自带及自定义Toast的对比");
-            itemInfo5.setNickName("Toast演示");
-            itemInfo5.setPortrait(R.mipmap.toast);
+            itemInfo5.setMotto("横屏布局加载、限定符、动态静态碎片加载、ListView使用、碎片活动交互");
+            itemInfo5.setNickName("平板模式");
+            itemInfo5.setPortrait(R.mipmap.a6);
             mItemInfoList.add(itemInfo5);
 
-
             ItemInfo itemInfo6 = new ItemInfo();
-            itemInfo6.setMotto("Lyout布局的设置、优化、计算逻辑的实现");
-            itemInfo6.setNickName("计算器逻辑及布局");
-            itemInfo6.setPortrait(R.mipmap.jisuanqi);
+            itemInfo6.setMotto("访问内容提供者、ListView使用");
+            itemInfo6.setNickName("联系人访问");
+            itemInfo6.setPortrait(R.mipmap.a7);
             mItemInfoList.add(itemInfo6);
 
+            ItemInfo itemInfo7 = new ItemInfo();
+            itemInfo7.setMotto("Json数据解析、网络工具类封装、回调接口、handler");
+            itemInfo7.setNickName("数据解析");
+            itemInfo7.setPortrait(R.mipmap.a8);
+            mItemInfoList.add(itemInfo7);
+
+            ItemInfo itemInfo8 = new ItemInfo();
+            itemInfo8.setMotto("继承View重写、类封装复用、线程动态View");
+            itemInfo8.setNickName("自定义View");
+            itemInfo8.setPortrait(R.mipmap.a9);
+            mItemInfoList.add(itemInfo8);
+
             ItemInfo itemInfo9 = new ItemInfo();
-            itemInfo9.setMotto("Fragment的事件的操作");
-            itemInfo9.setNickName("微信布局");
-            itemInfo9.setPortrait(R.mipmap.wechat);
+            itemInfo9.setMotto("Service、动态权限使用、通知管理、回调接口");
+            itemInfo9.setNickName("Service");
+            itemInfo9.setPortrait(R.mipmap.aaa);
             mItemInfoList.add(itemInfo9);
 
-            ItemInfo itemInfo12 = new ItemInfo();
-            itemInfo12.setMotto("调用通知管理系统服务通知管理");
-            itemInfo12.setNickName("发送一条通知");
-            itemInfo12.setPortrait(R.mipmap.tongzhi);
-            mItemInfoList.add(itemInfo12);
+            ItemInfo itemInfo10 = new ItemInfo();
+            itemInfo10.setMotto("Lyout布局练习、逻辑实现");
+            itemInfo10.setNickName("计算器");
+            itemInfo10.setPortrait(R.mipmap.a10);
+            mItemInfoList.add(itemInfo10);
 
-            ItemInfo itemInfo13 = new ItemInfo();
-            itemInfo13.setMotto("自定义View");
-            itemInfo13.setNickName("自定义View");
-            itemInfo13.setPortrait(R.mipmap.tongzhi);
-            mItemInfoList.add(itemInfo13);
-
-            ItemInfo itemInfo14 = new ItemInfo();
-            itemInfo14.setMotto("发送接收广播、清空栈");
-            itemInfo14.setNickName("强制下线");
-            itemInfo14.setPortrait(R.mipmap.tongzhi);
-            mItemInfoList.add(itemInfo14);
-
-            ItemInfo itemInfo15 = new ItemInfo();
-            itemInfo15.setMotto("Handler");
-            itemInfo15.setNickName("加载网络图片");
-            itemInfo15.setPortrait(R.mipmap.tongzhi);
-            mItemInfoList.add(itemInfo15);
+            ItemInfo itemInfo11 = new ItemInfo();
+            itemInfo11.setMotto("GestureOverlayView加载预设手势");
+            itemInfo11.setNickName("自定义手势");
+            itemInfo11.setPortrait(R.mipmap.a11);
+            mItemInfoList.add(itemInfo11);
 
         }
 
@@ -127,7 +132,7 @@ public class AFragment extends Fragment {
         mRecyclerAdapter.setSmallType(false);
         mRecyclerView.setAdapter(mRecyclerAdapter);
 
-        //禁止嵌套滑动 可以让其由于惯性滑动
+        //嵌套滑动 可以让其由于惯性滑动
         mRecyclerView.setNestedScrollingEnabled(true);
     }
 

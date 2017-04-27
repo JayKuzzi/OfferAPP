@@ -1,9 +1,12 @@
 package com.bb.offerapp.activity;
 
 
+import android.Manifest;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -11,6 +14,7 @@ import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -20,6 +24,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -33,6 +39,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -151,6 +158,7 @@ public class OfferAppMainActivity extends AppCompatActivity {
     }
 
 
+
     private void initView_ImageView() {
         index_image = (ImageView) findViewById(R.id.imageview);
     }
@@ -163,10 +171,15 @@ public class OfferAppMainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if (id == R.id.nav_changepic) {
-
-                    Intent openAlbumIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                    openAlbumIntent.setType("image/*");
-                    startActivityForResult(openAlbumIntent, 1);
+                    if (ContextCompat.checkSelfPermission(OfferAppMainActivity.this, Manifest.
+                            permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(OfferAppMainActivity.this,new String[]{Manifest.
+                                permission.READ_EXTERNAL_STORAGE},1);
+                    }else{
+                        Intent openAlbumIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                        openAlbumIntent.setType("image/*");
+                        startActivityForResult(openAlbumIntent, 1);
+                    }
 
                 } else if (id == R.id.nav_changecity) {
                     cityNameDialog = new CityNameDialog(OfferAppMainActivity.this);
@@ -210,6 +223,22 @@ public class OfferAppMainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case 1:
+                if(grantResults.length>0&&grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Intent openAlbumIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                    openAlbumIntent.setType("image/*");
+                    startActivityForResult(openAlbumIntent, 1);
+                }else{
+                    Toast.makeText(OfferAppMainActivity.this,"未授权",Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+        }
     }
 
     @Override
@@ -307,7 +336,7 @@ public class OfferAppMainActivity extends AppCompatActivity {
 
 
     private void initView_FloatingActionButton() {
-        final Github github =new Github(this);
+        final Github github = new Github(this);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setBackgroundTintList(ColorStateList.valueOf(Color.argb(222, 208, 166, 80)));
         fab.setOnClickListener(new View.OnClickListener() {
@@ -509,9 +538,11 @@ public class OfferAppMainActivity extends AppCompatActivity {
 
 class Github implements Runnable {
     Context context;
-    Github(Context context){
-        this.context=context;
+
+    Github(Context context) {
+        this.context = context;
     }
+
     @Override
     public void run() {
         Uri uri = Uri.parse("https://github.com/JayKuzzi");

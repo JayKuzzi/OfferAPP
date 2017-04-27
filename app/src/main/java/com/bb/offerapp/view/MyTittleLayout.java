@@ -22,7 +22,6 @@ public class MyTittleLayout extends LinearLayout{
     public MyTittleLayout(final Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.mytittle,this);
-
         bt1= (Button) findViewById(R.id.tittle_back);
         bt2= (Button) findViewById(R.id.tittle_edit);
         bt1.setOnClickListener(new OnClickListener() {

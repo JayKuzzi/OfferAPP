@@ -2,5 +2,6 @@
     <string name="app_name">OfferApp</string>
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
+    <string name="ddns"><![CDATA[以上操作结果均在DDNS的file explorer中的data/data/<包>/databases／sql数据库文件中显示]]></string>
 
 </resources>

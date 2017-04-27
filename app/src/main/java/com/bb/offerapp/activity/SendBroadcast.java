@@ -14,14 +14,15 @@ public class SendBroadcast extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.broadcast);
-        Button forceOffline = (Button) findViewById(R.id.force_offline);
-        forceOffline.setOnClickListener(new View.OnClickListener() {
+        Button data = (Button) findViewById(R.id.data);
+        data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("com.example.broadcastbestpractice.FORCE_OFFLINE");
-                sendBroadcast(intent);
+                Intent intent = new Intent(SendBroadcast.this,DatabaseTest.class);
+                startActivity(intent);
             }
         });
+
     }
 
 }
