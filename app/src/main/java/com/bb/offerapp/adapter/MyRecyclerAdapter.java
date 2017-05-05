@@ -35,6 +35,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
     private List<ItemInfo> mItemInfoList;
     private Context context;
 
+
     //设置Item形状
     private boolean mIsSmall = false;
 

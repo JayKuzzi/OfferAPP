@@ -18,7 +18,7 @@ import java.util.List;
 
 public class Chat extends AppCompatActivity {
 
-    private List<Msg> msgList = new ArrayList<Msg>();
+    private List<Msg> msgList = new ArrayList<>();
 
     private EditText inputText;
 
@@ -46,6 +46,7 @@ public class Chat extends AppCompatActivity {
         msgRecyclerView.setLayoutManager(layoutManager);
         adapter = new MsgAdapter(msgList);
         msgRecyclerView.setAdapter(adapter);
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

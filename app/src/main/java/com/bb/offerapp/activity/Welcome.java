@@ -25,17 +25,18 @@ public class Welcome extends AppCompatActivity {
         final View view = View.inflate(this, R.layout.welcome, null);
         setContentView(view);
         handler = new Handler();
-        //打印主线程
-//        Log.i("main", Thread.currentThread().getId() + "");
 
         //渐变展示启动屏
-        AlphaAnimation aa = new AlphaAnimation(0.3f, 1.0f);
+        AlphaAnimation aa = new AlphaAnimation(0.4f, 1.0f);
         aa.setDuration(2000);
         view.startAnimation(aa);
         aa.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationEnd(Animation arg0) {
-                redirectTo();
+                handler.sendEmptyMessageDelayed(0,1000);
+                Intent intent = new Intent(Welcome.this, OfferAppMainActivity.class);
+                startActivity(intent);
+                finish();
             }
 
             @Override
@@ -48,29 +49,8 @@ public class Welcome extends AppCompatActivity {
         });
     }
 
-    /**
-     * 跳转到...
-     */
-    private void redirectTo() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //打印子线程
-//                Log.i("new", Thread.currentThread().getId() + "");
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(Welcome.this, OfferAppMainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }, 1000);
-            }
-        }).start();
-
-
 
 }
 
-}
+
 

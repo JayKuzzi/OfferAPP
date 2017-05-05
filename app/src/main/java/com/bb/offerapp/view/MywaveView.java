@@ -87,7 +87,6 @@ public class MywaveView extends View {
         switch (event.getAction()) {
             //点击获取圆环中心
             case MotionEvent.ACTION_DOWN:
-            case MotionEvent.ACTION_MOVE:
                 cx = (int) event.getX();
                 cy = (int) event.getY();
                 //初始化画笔
@@ -107,10 +106,12 @@ public class MywaveView extends View {
         radius += 10;
         strokewidth = radius/3;
         paint.setStrokeWidth(strokewidth);
+
         int nextAlpha= paint.getAlpha()-20;
         if(paint.getAlpha()<=20){
             nextAlpha =0;
         }
+
         int r= random.nextInt(256);
         int g= random.nextInt(256);
         int b= random.nextInt(256);

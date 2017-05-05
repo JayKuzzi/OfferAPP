@@ -65,7 +65,6 @@ import me.grantland.widget.AutofitTextView;
 public class OfferAppMainActivity extends AppCompatActivity {
     //两次退出程序
     private static boolean isExit = false;
-    Bitmap photo;
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -248,7 +247,7 @@ public class OfferAppMainActivity extends AppCompatActivity {
         else {
             try {
                 Uri uri = data.getData();
-                photo = MediaStore.Images.Media.getBitmap(getContentResolver(),
+                Bitmap photo = MediaStore.Images.Media.getBitmap(getContentResolver(),
                         uri);
                 index_image.setImageBitmap(photo);
             } catch (FileNotFoundException e) {
