@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#d8e0e8" >
-    <com.bb.offerapp.view.MyTittleLayout
+    <com.bb.offerapp2.view.MyTittleLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </com.bb.offerapp.view.MyTittleLayout>
+    </com.bb.offerapp2.view.MyTittleLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/msg_recycler_view"

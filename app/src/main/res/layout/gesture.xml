@@ -18,7 +18,7 @@ Android:gestureStrokeWidth
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context="com.bb.offerapp.activity.Gesture_1"
+    tools:context=".activity.Gesture_1"
     android:background="@mipmap/huaban">
 
     <android.gesture.GestureOverlayView

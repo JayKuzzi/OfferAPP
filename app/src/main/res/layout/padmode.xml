@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/news_title_fragment"
-        android:name="com.bb.offerapp.fragment.padmode.NewsTitleFragment"
+        android:name="com.bb.offerapp2.fragment.padmode.NewsTitleFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

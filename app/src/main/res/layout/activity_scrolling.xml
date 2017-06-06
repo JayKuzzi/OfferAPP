@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#FAFAFA"
     android:fitsSystemWindows="true"
-    tools:context="com.bb.offerapp.activity.OfferAppMainActivity">
+    tools:context=".activity.OfferAppMainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"

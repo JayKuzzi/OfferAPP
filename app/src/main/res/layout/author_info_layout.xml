@@ -28,7 +28,7 @@
             android:textStyle="bold"
             tools:text="D_clock爱吃葱花" />
 
-        <com.bb.offerapp.view.MyTextView
+        <com.bb.offerapp2.view.MyTextView
             android:id="@+id/tv_motto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
