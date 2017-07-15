@@ -3,6 +3,8 @@
 结合运用、异步加载网络数据、安卓较新类库、自定义View布局的使用、JSON数据解析等技术。
 # APP演示截图
 ![image](https://github.com/JayKuzzi/OfferAPP/blob/master/app/appshot/111.jpg)
+
+## 问题
 一、登陆数据库 强制下线demo  想把这两个demo合起来使用
 **问题1:**保存用户名：每次都得输入登录很麻烦 解决：用SharedPreferences来存储数据
 **问题2:**强制下线后点击确定 页面关闭 ，不符合逻辑啊，应该是返回登录界面  解决：采用了自定义的类的管理类
