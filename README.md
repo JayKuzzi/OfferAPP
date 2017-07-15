@@ -1,17 +1,8 @@
 # Android个人学习、开发代码。OfferApp为个人应聘使用。
-# 就读大三，致力进军IT行业，并一直为此付诸行动。
-# 近期更新技术文档到博客。
-http://www.jianshu.com/users/19513cee1eb8
+采用Material设计框架对个人做过的小功能、小案例、博客的Demo进行整合，学习归纳了安卓四大组建的
+结合运用、异步加载网络数据、安卓较新类库、自定义View布局的使用、JSON数据解析等技术。
 # APP演示截图
-![image](https://github.com/JayKuzzi/OfferAPP/blob/master/app/appshot/主页.png)
-![image](https://github.com/JayKuzzi/OfferAPP/blob/master/app/appshot/侧滑.png)
-![image](https://github.com/JayKuzzi/OfferAPP/blob/master/app/appshot/功能.png)
-![image](https://github.com/JayKuzzi/OfferAPP/blob/master/app/appshot/项目.png)
-![image](https://github.com/JayKuzzi/OfferAPP/blob/master/app/appshot/音乐.png)
-![image](https://github.com/JayKuzzi/OfferAPP/blob/master/app/appshot/关于.png)
-
-WX：ZAWZZ123
-
+![image](https://github.com/JayKuzzi/OfferAPP/blob/master/app/appshot/111.jpg)
 一、登陆数据库 强制下线demo  想把这两个demo合起来使用
 **问题1:**保存用户名：每次都得输入登录很麻烦 解决：用SharedPreferences来存储数据
 **问题2:**强制下线后点击确定 页面关闭 ，不符合逻辑啊，应该是返回登录界面  解决：采用了自定义的类的管理类
